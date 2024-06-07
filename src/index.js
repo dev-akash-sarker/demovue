@@ -6,6 +6,8 @@ const app = Vue.createApp({
     <button v-on:click="increement">increement</button>
     <button v-on:click="decreement">decreement</button>
     <div>{{count}}</div>
+    <div v-if="isEven(count)">Even</div>
+    <div v-else>Odd</div>
   </div>
 
   `,
@@ -21,6 +23,9 @@ const app = Vue.createApp({
     },
     decreement() {
       this.count == 0 ? (this.count = 0) : (this.count -= 1);
+    },
+    isEven() {
+      return this.count % 2 === 0;
     },
   },
 });
