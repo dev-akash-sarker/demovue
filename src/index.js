@@ -3,12 +3,13 @@ const app = Vue.createApp({
   // template is a HTML part of our Vue application
   template: `
   <h1>Hello World</h1>
-  <div> Hello {{counter}}</div>
+  <div> Hello {{msg}}</div>
   `,
   data() {
     return {
       msg: "World",
     };
   },
+  methods: {},
 });
 app.mount("#app");
