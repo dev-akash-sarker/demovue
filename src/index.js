@@ -6,8 +6,13 @@ const app = Vue.createApp({
     <button v-on:click="increement">increement</button>
     <button v-on:click="decreement">decreement</button>
     <div>{{count}}</div>
-    <div v-if="isEven(count)">Even</div>
-    <div v-else>Odd</div>
+   <div v-for="number in numbers">
+    <div>
+     {{number}}
+     <span v-if="isEven(number)">Even</span>
+     <span v-else>Odd</span>
+    </div>
+   </div>
   </div>
 
   `,
@@ -15,6 +20,7 @@ const app = Vue.createApp({
     return {
       msg: "World",
       count: 0,
+      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     };
   },
   methods: {
@@ -24,8 +30,8 @@ const app = Vue.createApp({
     decreement() {
       this.count == 0 ? (this.count = 0) : (this.count -= 1);
     },
-    isEven() {
-      return this.count % 2 === 0;
+    isEven(val) {
+      return val % 2 === 0;
     },
   },
 });
