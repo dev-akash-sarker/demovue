@@ -16,9 +16,16 @@ const app = Vue.createApp({
    <div>
     <h3>All numbers</h3>
     <input 
-    v-bind:value="value"
-    v-on:input="input"
+    type="checkbox"
+    v-model="value"
+    value="a"
     />
+    <input 
+    type="checkbox"
+    v-model="value"
+    value="b"
+    />
+  
     <div>
         {{value}}
         <div class="red">
@@ -39,7 +46,7 @@ const app = Vue.createApp({
       msg: "World",
       count: 0,
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      value: "user",
+      value: ["a"],
     };
   },
   // computed, if the value has changed before executing
@@ -54,9 +61,9 @@ const app = Vue.createApp({
     },
   },
   methods: {
-    input(event) {
-      this.value = event.target.value;
-    },
+    // input(event) {
+    //   this.value = event.target.value;
+    // },
     getClass(num) {
       return this.isEven(num) ? "blue" : "red";
     },
