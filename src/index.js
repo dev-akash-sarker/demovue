@@ -15,6 +15,16 @@ const app = Vue.createApp({
    </div>
    <div>
     <h3>All numbers</h3>
+    <input 
+    v-bind:value="value"
+    v-on:input="input"
+    />
+    <div>
+        {{value}}
+        <div class="red">
+          {{error}}
+        </div>
+    </div>
     <div v-for="number in numbers" v-bind:class="getClass(number)">
       <div>
       {{number}}
@@ -29,6 +39,7 @@ const app = Vue.createApp({
       msg: "World",
       count: 0,
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      value: "user",
     };
   },
   // computed, if the value has changed before executing
@@ -36,8 +47,16 @@ const app = Vue.createApp({
     evenList() {
       return this.numbers.filter((num) => this.isEven(num));
     },
+    error() {
+      if (this.value.length < 5) {
+        return "Must be greater than 5";
+      }
+    },
   },
   methods: {
+    input(event) {
+      this.value = event.target.value;
+    },
     getClass(num) {
       return this.isEven(num) ? "blue" : "red";
     },
